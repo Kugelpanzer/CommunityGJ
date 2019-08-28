@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DrawGrid : MonoBehaviour
 {
-    [System.Serializable]
+    //[System.Serializable]
     public struct IdObj
     {
         public GameObject gj;
@@ -13,6 +13,8 @@ public class DrawGrid : MonoBehaviour
     BoardClass br;
 
     public List<IdObj> ConvertList = new List<IdObj>();
+    Dictionary<int,GameObject> DictList= new Dictionary<int,GameObject>();
+
     //public GridObject[,] Board;
     // Start is called before the first frame update
     
@@ -24,14 +26,19 @@ public class DrawGrid : MonoBehaviour
         br.SpawnWalls();
         br.DebugBoard();
 
+        foreach(IdObj io in ConvertList)
+        {
+            DictList.Add(io.id, io.gj);
+        }
+
     }
 
     public void UpdateGrid()
     {
-        for (int i = br.GameBoard.GetLength(0) - 1; i >= 0; i--)
-            for (int j = br.GameBoard.GetLength(1) - 1; j >= 0; j--)
+        for (int i = 0; i < br.GameBoard.GetLength(0); i++)
+            for (int j = 0; j < br.GameBoard.GetLength(1); j++)
             {
-
+                
             }
 
     }
