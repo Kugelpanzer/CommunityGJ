@@ -97,6 +97,111 @@ public class BoardClass:MonoBehaviour
             }
     }
 
+	public void MoveGhoulW()
+    {
+        for (int i = 0; i < GameBoard.GetLength(0); i++)
+            for (int j = 0; j < GameBoard.GetLength(1); j++)
+            {
+                if (GameBoard[i, j] == (int)GamePiece.Ghoul)
+                {
+                    if (GameBoard[i - 1, j] == (int)GamePiece.EmptyTile)
+                    {
+                        GameBoard[i - 1, j] = (int)GamePiece.Ghoul;
+                        GameBoard[i, j] = (int)GamePiece.EmptyTile;
+                    }
+                    else if (GameBoard[i - 1, j] > 3 &&  GameBoard[i - 1, j] < 8)
+                    {
+                        if (GameBoard[i - 2, j] == (int)GamePiece.EmptyTile)
+						{
+							GameBoard[i - 2, j] = GameBoard[i - 1, j];
+							GameBoard[i - 1, j] = (int)GamePiece.Ghoul;
+							GameBoard[i, j] = (int)GamePiece.EmptyTile;
+						}
+                    }
+                }
+            }
+		}
+    }
+	
+	public void MoveGhoulA()
+    {
+        for (int i = 0; i < GameBoard.GetLength(0); i++)
+            for (int j = 0; j < GameBoard.GetLength(1); j++)
+            {
+                if (GameBoard[i, j] == (int)GamePiece.Ghoul)
+                {
+                    if (GameBoard[i, j - 1] == (int)GamePiece.EmptyTile)
+                    {
+                        GameBoard[i, j - 1] = (int)GamePiece.Ghoul;
+                        GameBoard[i, j] = (int)GamePiece.EmptyTile;
+                    }
+                    else if (GameBoard[i, j - 1] > 3 &&  GameBoard[i, j - 1] < 8)
+                    {
+                        if (GameBoard[i, j - 2] == (int)GamePiece.EmptyTile)
+						{
+							GameBoard[i, j - 2] = GameBoard[i, j - 1];
+							GameBoard[i, j - 1] = (int)GamePiece.Ghoul;
+							GameBoard[i, j] = (int)GamePiece.EmptyTile;
+						}
+                    }
+                }
+            }
+		}
+    }
+	
+	
+	public void MoveGhoulS()
+    {
+        for (int i = 0; i < GameBoard.GetLength(0); i++)
+            for (int j = 0; j < GameBoard.GetLength(1); j++)
+            {
+                if (GameBoard[i, j] == (int)GamePiece.Ghoul)
+                {
+                    if (GameBoard[i + 1, j] == (int)GamePiece.EmptyTile)
+                    {
+                        GameBoard[i + 1, j] = (int)GamePiece.Ghoul;
+                        GameBoard[i, j] = (int)GamePiece.EmptyTile;
+                    }
+                    else if (GameBoard[i + 1, j] > 3 &&  GameBoard[i + 1, j] < 8)
+                    {
+                        if (GameBoard[i + 2, j] == (int)GamePiece.EmptyTile)
+						{
+							GameBoard[i + 2, j] = GameBoard[i + 1, j];
+							GameBoard[i + 1, j] = (int)GamePiece.Ghoul;
+							GameBoard[i, j] = (int)GamePiece.EmptyTile;
+						}
+                    }
+                }
+            }
+		}
+    }
+	
+	
+	public void MoveGhoulD()
+    {
+        for (int i = 0; i < GameBoard.GetLength(0); i++)
+            for (int j = 0; j < GameBoard.GetLength(1); j++)
+            {
+                if (GameBoard[i, j] == (int)GamePiece.Ghoul)
+                {
+                    if (GameBoard[i, j + 1] == (int)GamePiece.EmptyTile)
+                    {
+                        GameBoard[i, j + 1] = (int)GamePiece.Ghoul;
+                        GameBoard[i, j] = (int)GamePiece.EmptyTile;
+                    }
+                    else if (GameBoard[i, j + 1] > 3 &&  GameBoard[i, j + 1] < 8)
+                    {
+                        if (GameBoard[i, j + 2] == (int)GamePiece.EmptyTile)
+						{
+							GameBoard[i, j + 2] = GameBoard[i, j + 1];
+							GameBoard[i, j + 1] = (int)GamePiece.Ghoul;
+							GameBoard[i, j] = (int)GamePiece.EmptyTile;
+						}
+                    }
+                }
+            }
+		}
+    }
 
     public void SpawnPeasant(int i, int j)
     {
@@ -142,9 +247,9 @@ enum GamePiece
 {
     EmptyTile = 0,
     ImmovableBlock = 1,
-    MovableBlock = 2,
-    Ghoul = 3,
-    Peasant = 4,
+    Ghoul = 2,
+    Peasant = 3,
+	MovableBlock = 4,
     Tower1 = 5,
     Tower2 = 6,
     Tower3 = 7,
