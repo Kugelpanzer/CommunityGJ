@@ -12,7 +12,7 @@ public class DrawGrid : MonoBehaviour
     }
     BoardClass br;
 
-    public GameObject bakcgroundObj;
+    public GameObject backgroundObj;
     public List<IdObj> ConvertList = new List<IdObj>();
     Dictionary<int,GameObject> DictList= new Dictionary<int,GameObject>();
 
@@ -26,6 +26,8 @@ public class DrawGrid : MonoBehaviour
 
         br = GetComponent<BoardClass>();
         br.SpawnWalls();
+        br.SpawnGhoul(1, 1);
+        UpdateGrid();
         br.DebugBoard();
 
         foreach(IdObj io in ConvertList)
@@ -66,12 +68,13 @@ public class DrawGrid : MonoBehaviour
             for (int j = 0; j < br.GameBoard.GetLength(1); j++)
             {
 
-                gj = Instantiate(DictList[1]);
+                gj = Instantiate(backgroundObj);
                 Sprite spr = gj.GetComponent<SpriteRenderer>().sprite;
                 gj.transform.position = new Vector2(j * (spr.rect.width / 100), i * (spr.rect.height / 100));
             }
 
     }
+
 
     // Update is called once per frame
     void Update()

@@ -207,6 +207,10 @@ public class BoardClass:MonoBehaviour
     {
         GameBoard[i, j] = (int)GamePiece.Peasant;
     }
+    public void SpawnGhoul (int i, int j)
+    {
+        GameBoard[i, j] = (int)GamePiece.Ghoul;
+    }
 
     public void SpawnWalls()
     {
