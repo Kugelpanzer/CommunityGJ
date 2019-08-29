@@ -19,7 +19,8 @@ public class BoardClass:MonoBehaviour
     public void MoveAllPeasantsW()
     {
         for (int i = 0; i < GameBoard.GetLength(0); i++)
-            for (int j = 0; j < GameBoard.GetLength(1); j++)
+        {
+			for (int j = 0; j < GameBoard.GetLength(1); j++)
             {
                 if (GameBoard[i, j] == (int)GamePiece.Peasant)
                 {
@@ -34,12 +35,14 @@ public class BoardClass:MonoBehaviour
                     }
                 }
             }
+		}
     }
 
     public void MoveAllPeasantsA()
     {
         for (int i = 0; i < GameBoard.GetLength(0); i++)
-            for (int j = 0; j < GameBoard.GetLength(1); j++)
+        {
+			for (int j = 0; j < GameBoard.GetLength(1); j++)
             {
                 if (GameBoard[i, j] == (int)GamePiece.Peasant)
                 {
@@ -54,13 +57,15 @@ public class BoardClass:MonoBehaviour
                     }
                 }
             }
+		}
     }
 
 
     public void MoveAllPeasantsS()
     {
         for (int i = GameBoard.GetLength(0) - 1; i >= 0; i--)
-            for (int j = GameBoard.GetLength(1) - 1; j >= 0; j--)
+        {   
+			for (int j = GameBoard.GetLength(1) - 1; j >= 0; j--)
             {
                 if (GameBoard[i, j] == (int)GamePiece.Peasant)
                 {
@@ -75,12 +80,14 @@ public class BoardClass:MonoBehaviour
                     }
                 }
             }
+		}
     }
 
     public void MoveAllPeasantsD()
     {
         for (int i = GameBoard.GetLength(0) - 1; i >= 0; i--)
-            for (int j = GameBoard.GetLength(1) - 1; j >= 0; j--)
+        {
+			for (int j = GameBoard.GetLength(1) - 1; j >= 0; j--)
             {
                 if (GameBoard[i, j] == (int)GamePiece.Peasant)
                 {
@@ -95,12 +102,14 @@ public class BoardClass:MonoBehaviour
                     }
                 }
             }
+		}
     }
 
 	public void MoveGhoulW()
     {
         for (int i = 0; i < GameBoard.GetLength(0); i++)
-            for (int j = 0; j < GameBoard.GetLength(1); j++)
+        {
+			for (int j = 0; j < GameBoard.GetLength(1); j++)
             {
                 if (GameBoard[i, j] == (int)GamePiece.Ghoul)
                 {
@@ -121,12 +130,13 @@ public class BoardClass:MonoBehaviour
                 }
             }
 		}
-    
+    }
 	
 	public void MoveGhoulA()
     {
         for (int i = 0; i < GameBoard.GetLength(0); i++)
-            for (int j = 0; j < GameBoard.GetLength(1); j++)
+        {
+			for (int j = 0; j < GameBoard.GetLength(1); j++)
             {
                 if (GameBoard[i, j] == (int)GamePiece.Ghoul)
                 {
@@ -147,13 +157,14 @@ public class BoardClass:MonoBehaviour
                 }
             }
 		}
-    
+	}
 	
 	
 	public void MoveGhoulS()
     {
         for (int i = 0; i < GameBoard.GetLength(0); i++)
-            for (int j = 0; j < GameBoard.GetLength(1); j++)
+        {
+			for (int j = 0; j < GameBoard.GetLength(1); j++)
             {
                 if (GameBoard[i, j] == (int)GamePiece.Ghoul)
                 {
@@ -174,13 +185,14 @@ public class BoardClass:MonoBehaviour
                 }
             }
 		}
-    
+    }
 	
 	
 	public void MoveGhoulD()
     {
         for (int i = 0; i < GameBoard.GetLength(0); i++)
-            for (int j = 0; j < GameBoard.GetLength(1); j++)
+        {
+			for (int j = 0; j < GameBoard.GetLength(1); j++)
             {
                 if (GameBoard[i, j] == (int)GamePiece.Ghoul)
                 {
@@ -201,7 +213,56 @@ public class BoardClass:MonoBehaviour
                 }
             }
 		}
-    
+    }
+	
+	public void FirePetrificationRay()
+    {
+        for (int i = 0; i < GameBoard.GetLength(0); i++)
+        {
+			for (int j = 0; j < GameBoard.GetLength(1); j++)
+            {
+                if (GameBoard[i, j] == (int)GamePiece.Tower1)
+                {
+					for (int k = i; k < GameBoard.GetLength(0); k++)
+					{
+						if (GameBoard[k, j] == (int)GamePiece.Peasant)
+						{
+							GameBoard[k, j] = (int)GamePiece.PetrifiedPeasant;
+							return;
+						}
+					}					
+                }
+            }
+		}
+    }
+	
+	public void FireDislocatingBeam()
+    {
+        for (int i = 0; i < GameBoard.GetLength(0); i++)
+        {
+			for (int j = 0; j < GameBoard.GetLength(1); j++)
+            {
+                if (GameBoard[i, j] == (int)GamePiece.Tower2)
+                {
+					if (GameBoard[i + 1, j] == (int)GamePiece.Peasant)
+					{
+						if (GameBoard[i + 5, j] == (int)GamePiece.EmptyTile)
+						{
+							GameBoard[i + 1, j] = (int)GamePiece.EmptyTile;
+							GameBoard[i + 5, j] = (int)GamePiece.Peasant;
+						} 
+						else if (GameBoard[i + 5, j] == (int)GamePiece.Peasant)
+						{
+							GameBoard[i + 1, j] = (int)GamePiece.EmptyTile;
+							GameBoard[i + 5, j] = (int)GamePiece.EmptyTile;
+							//Add event for peasant death
+						}
+					
+					}				
+                }
+            }
+		}
+    }
 
     public void SpawnPeasant(int i, int j)
     {
@@ -215,13 +276,15 @@ public class BoardClass:MonoBehaviour
     public void SpawnWalls()
     {
         for (int i = 0; i < GameBoard.GetLength(0); i++)
-            for (int j = 0; j < GameBoard.GetLength(1); j++)
+        {
+			for (int j = 0; j < GameBoard.GetLength(1); j++)
             {
                 if (i == 0 || j == 0 || i == GameBoard.GetLength(0) - 1 || j == GameBoard.GetLength(1) - 1)
                 {
                     GameBoard[i, j] = (int)GamePiece.ImmovableBlock;
                 }
             }
+		}
     }
 
     public void DebugBoard()
@@ -257,5 +320,6 @@ enum GamePiece
     Tower1 = 5,
     Tower2 = 6,
     Tower3 = 7,
-    StunnedPeasant = 8
+    StunnedPeasant = 8,
+	PetrifiedPeasant = 9
 }
