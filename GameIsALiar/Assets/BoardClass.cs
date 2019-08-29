@@ -121,7 +121,7 @@ public class BoardClass:MonoBehaviour
                 }
             }
 		}
-    }
+    
 	
 	public void MoveGhoulA()
     {
@@ -147,7 +147,7 @@ public class BoardClass:MonoBehaviour
                 }
             }
 		}
-    }
+    
 	
 	
 	public void MoveGhoulS()
@@ -174,7 +174,7 @@ public class BoardClass:MonoBehaviour
                 }
             }
 		}
-    }
+    
 	
 	
 	public void MoveGhoulD()
@@ -201,7 +201,7 @@ public class BoardClass:MonoBehaviour
                 }
             }
 		}
-    }
+    
 
     public void SpawnPeasant(int i, int j)
     {
