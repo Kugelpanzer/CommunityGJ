@@ -51,7 +51,7 @@ public class DrawGrid : MonoBehaviour
         
     }
 
-    public void UpdateGrid()
+    public void UpdateGrid() // Destroys all objects in grid and creates new ones
     {
         //Debug.Log(ExistingObjects.Count);
         if (ExistingObjects.Count != 0)
@@ -77,7 +77,7 @@ public class DrawGrid : MonoBehaviour
             }
 
     }
-    public void SpawnBackground()
+    public void SpawnBackground() //spawns background in a grid thats size of map
     {
         GameObject gj;
 
@@ -92,7 +92,7 @@ public class DrawGrid : MonoBehaviour
 
 
     }
-    public bool InputMoveGhoul()
+    public bool InputMoveGhoul()//keyboard input for ghoul
     {
        if(Input.GetKeyDown(KeyCode.D))
         {
@@ -126,7 +126,7 @@ public class DrawGrid : MonoBehaviour
         return false;
 
     }
-    public bool InputMovePeasent()
+    public bool InputMovePeasent()// keyboard input for peasent
     {
         if (Input.GetKeyDown(KeyCode.D))
         {
@@ -156,9 +156,12 @@ public class DrawGrid : MonoBehaviour
         return false;
     }
 
+
+
+    //Make move is called when any button is pressed 
     public void MakeMove()
     {
-        if (LevelFlag)
+        if (LevelFlag)  //for first level when ghoul is moving
         {
             if (InputMoveGhoul())
             {
@@ -166,7 +169,7 @@ public class DrawGrid : MonoBehaviour
                 lc.TakeTurn();
             }
         }
-        else
+        else    //second level when peasents are moving 
         {
             if (InputMovePeasent())
             {
