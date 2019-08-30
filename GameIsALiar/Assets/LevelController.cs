@@ -23,6 +23,10 @@ public class LevelController : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
+    public void ResetLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 
     public virtual void TakeTurn()
     {

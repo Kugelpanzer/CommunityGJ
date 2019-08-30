@@ -105,7 +105,7 @@ public class BoardClass:MonoBehaviour
 		}
     }
 
-	public void MoveGhoulW()
+	public bool MoveGhoulW()
     {
         for (int i = 0; i < GameBoard.GetLength(0); i++)
         {
@@ -117,6 +117,7 @@ public class BoardClass:MonoBehaviour
                     {
                         GameBoard[i - 1, j] = (int)GamePiece.Ghoul;
                         GameBoard[i, j] = (int)GamePiece.EmptyTile;
+                        return true;
                     }
                     else if (GameBoard[i - 1, j] > 3 &&  GameBoard[i - 1, j] < 8)
                     {
@@ -125,14 +126,16 @@ public class BoardClass:MonoBehaviour
 							GameBoard[i - 2, j] = GameBoard[i - 1, j];
 							GameBoard[i - 1, j] = (int)GamePiece.Ghoul;
 							GameBoard[i, j] = (int)GamePiece.EmptyTile;
+                            return true;
 						}
                     }
                 }
             }
 		}
+        return false;
     }
 	
-	public void MoveGhoulA()
+	public bool MoveGhoulA()
     {
         for (int i = 0; i < GameBoard.GetLength(0); i++)
         {
@@ -144,23 +147,27 @@ public class BoardClass:MonoBehaviour
                     {
                         GameBoard[i, j - 1] = (int)GamePiece.Ghoul;
                         GameBoard[i, j] = (int)GamePiece.EmptyTile;
+                        return true;
                     }
                     else if (GameBoard[i, j - 1] > 3 &&  GameBoard[i, j - 1] < 8)
                     {
                         if (GameBoard[i, j - 2] == (int)GamePiece.EmptyTile)
-						{
-							GameBoard[i, j - 2] = GameBoard[i, j - 1];
-							GameBoard[i, j - 1] = (int)GamePiece.Ghoul;
-							GameBoard[i, j] = (int)GamePiece.EmptyTile;
-						}
+                        {
+                            GameBoard[i, j - 2] = GameBoard[i, j - 1];
+                            GameBoard[i, j - 1] = (int)GamePiece.Ghoul;
+                            GameBoard[i, j] = (int)GamePiece.EmptyTile;
+                            return true;
+                        }
+
                     }
                 }
             }
 		}
+        return false;
 	}
 	
 	
-	public void MoveGhoulS()
+	public bool MoveGhoulS()
     {
         int pomX = 0, pomY = 0;
         bool flag = false;
@@ -182,6 +189,7 @@ public class BoardClass:MonoBehaviour
             {
                 GameBoard[pomY + 1, pomX] = (int)GamePiece.Ghoul;
                 GameBoard[pomY, pomX] = (int)GamePiece.EmptyTile;
+                return true;
             }
             else if (GameBoard[pomY + 1, pomX] > 3 && GameBoard[pomY + 1, pomX] < 8)
             {
@@ -190,13 +198,15 @@ public class BoardClass:MonoBehaviour
                     GameBoard[pomY + 2, pomX] = GameBoard[pomY + 1, pomX];
                     GameBoard[pomY + 1, pomX] = (int)GamePiece.Ghoul;
                     GameBoard[pomY, pomX] = (int)GamePiece.EmptyTile;
+                    return true;
                 }
             }
         }
+        return false;
     }
 	
 	
-	public void MoveGhoulD()
+	public bool MoveGhoulD()
     {
         int pomX=0, pomY=0;
         bool flag = false;
@@ -218,6 +228,7 @@ public class BoardClass:MonoBehaviour
             {
                 GameBoard[pomY, pomX + 1] = (int)GamePiece.Ghoul;
                 GameBoard[pomY, pomX] = (int)GamePiece.EmptyTile;
+                return true;
             }
             else if (GameBoard[pomY, pomX + 1] > 3 && GameBoard[pomY, pomX + 1] < 8)
             {
@@ -226,9 +237,11 @@ public class BoardClass:MonoBehaviour
                     GameBoard[pomY, pomX + 2] = GameBoard[pomY, pomX + 1];
                     GameBoard[pomY, pomX + 1] = (int)GamePiece.Ghoul;
                     GameBoard[pomY, pomX] = (int)GamePiece.EmptyTile;
+                    return true;
                 }
             }
         }
+        return false;
     }
 	
 	public void FirePetrificationRay()

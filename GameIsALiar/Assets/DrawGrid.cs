@@ -96,27 +96,32 @@ public class DrawGrid : MonoBehaviour
     {
        if(Input.GetKeyDown(KeyCode.D))
         {
-            br.MoveGhoulD();
-
-            return true;
+            if (br.MoveGhoulD())
+                return true;
+            else
+                return false;
         }
        if (Input.GetKeyDown(KeyCode.A))
         {
-            br.MoveGhoulA();
-
-            return true;
+            if (br.MoveGhoulA())
+                return true;
+            else
+                return false;
         }
        if (Input.GetKeyDown(KeyCode.S))
         {
-            br.MoveGhoulS();
-
-            return true;
+            if (br.MoveGhoulS())
+                return true;
+            else
+                return false;
         }
        if (Input.GetKeyDown(KeyCode.W))
         {
-            br.MoveGhoulW();
+            if (br.MoveGhoulW())
+                return true;
+            else
+                return false;
 
-            return true;
         }
         return false;
 
