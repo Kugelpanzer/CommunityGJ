@@ -36,6 +36,9 @@ public class DrawGrid : MonoBehaviour
         br.SpawnPeasant(4,4);
         br.SpawnPeasant(5, 4);
         br.SpawnPeasant(5, 5);
+        br.SpawnBlock(5, 6);
+        br.SpawnBlock(6, 6);
+        br.SpawnBlock(3, 3);
         UpdateGrid();
         br.DebugBoard();
 
@@ -133,7 +136,7 @@ public class DrawGrid : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //InputMoveGhoul();
-        InputMovePeasent();
+        InputMoveGhoul();
+        //InputMovePeasent();
     }
 }

@@ -288,6 +288,10 @@ public class BoardClass:MonoBehaviour
     {
         GameBoard[i, j] = (int)GamePiece.Ghoul;
     }
+    public void SpawnBlock(int i, int j)
+    {
+        GameBoard[i, j] = (int)GamePiece.MovableBlock;
+    }
 
     public void SpawnWalls()
     {
