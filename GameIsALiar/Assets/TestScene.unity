@@ -233,9 +233,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36f0fa876fa58a54da4846b662219704, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  backgroundObj: {fileID: 5405781174824064768, guid: f70206918b3af4048a319777c234ca63,
+    type: 3}
   ConvertList:
-  - gj: {fileID: 5405781174824064768, guid: f70206918b3af4048a319777c234ca63, type: 3}
-    id: 1
+  - gj: {fileID: 7296570842460980552, guid: cb8e1c616ad9b8d40abb6b1876a2f631, type: 3}
+    id: 2
 --- !u!4 &2144867980
 Transform:
   m_ObjectHideFlags: 0

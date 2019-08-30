@@ -22,18 +22,30 @@ public class DrawGrid : MonoBehaviour
     
     void Start()
     {
+        foreach (IdObj io in ConvertList)
+        {
+            DictList.Add(io.id, io.gj);
+        }
         // Board = new GridObject[5, 5];
 
         br = GetComponent<BoardClass>();
         br.SpawnWalls();
         br.SpawnGhoul(1, 1);
         UpdateGrid();
+        br.MoveGhoulD();
+        /*br.MoveGhoulD();
+        br.MoveGhoulD();
+        br.MoveGhoulD();
+        br.MoveGhoulD();
+        br.MoveGhoulD();
+        br.MoveGhoulD();
+        br.MoveGhoulD();*/
+        br.MoveGhoulD();
+        br.MoveGhoulD();
+        UpdateGrid();
         br.DebugBoard();
 
-        foreach(IdObj io in ConvertList)
-        {
-            DictList.Add(io.id, io.gj);
-        }
+
         SpawnBackground();
     }
 
@@ -45,17 +57,19 @@ public class DrawGrid : MonoBehaviour
             {
                  Destroy(ExistingObjects[i]);
             }
-        Debug.Log(ExistingObjects.Count);
+        ExistingObjects.Clear();
+        //Debug.Log(ExistingObjects.Count);
         for (int i = 0; i < br.GameBoard.GetLength(0); i++)
             for (int j = 0; j < br.GameBoard.GetLength(1); j++)
             {
-
+                //Debug.Log(br.GameBoard[i, j]);
                 //gj = Instantiate(DictList[1]);
                 if (DictList.ContainsKey(br.GameBoard[i, j]))
                 {
-                    ExistingObjects[ExistingObjects.Count - 1] = Instantiate(DictList[br.GameBoard[i, j]]);
+                    //Debug.Log("z");
+                    ExistingObjects.Add(Instantiate(DictList[br.GameBoard[i, j]]));
                     Sprite spr = ExistingObjects[ExistingObjects.Count - 1].GetComponent<SpriteRenderer>().sprite;
-                    ExistingObjects[ExistingObjects.Count - 1].transform.position = new Vector2(j * (spr.rect.width / 100), i * (spr.rect.height / 100));
+                    ExistingObjects[ExistingObjects.Count - 1].transform.position = new Vector2(j * (spr.rect.width / 100), -i * (spr.rect.height / 100));
                 }
             }
 
@@ -70,15 +84,60 @@ public class DrawGrid : MonoBehaviour
 
                 gj = Instantiate(backgroundObj);
                 Sprite spr = gj.GetComponent<SpriteRenderer>().sprite;
-                gj.transform.position = new Vector2(j * (spr.rect.width / 100), i * (spr.rect.height / 100));
+                gj.transform.position = new Vector2(j * (spr.rect.width / 100), -i * (spr.rect.height / 100));
             }
 
     }
-
+    public void InputMoveGhoul()
+    {
+       if(Input.GetKeyDown(KeyCode.D))
+        {
+            br.MoveGhoulD();
+            UpdateGrid();
+        }
+       if (Input.GetKeyDown(KeyCode.A))
+        {
+            br.MoveGhoulA();
+            UpdateGrid();
+        }
+       if (Input.GetKeyDown(KeyCode.S))
+        {
+            br.MoveGhoulS();
+            UpdateGrid();
+        }
+       if (Input.GetKeyDown(KeyCode.W))
+        {
+            br.MoveGhoulW();
+            UpdateGrid();
+        }
+    }
+    public void InputMovePeasent()
+    {
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            br.MoveAllPeasantsD();
+            UpdateGrid();
+        }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            br.MoveAllPeasantsA();
+            UpdateGrid();
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            br.MoveAllPeasantsS();
+            UpdateGrid();
+        }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            br.MoveAllPeasantsW();
+            UpdateGrid();
+        }
+    }
 
     // Update is called once per frame
     void Update()
     {
-        
+        InputMoveGhoul();
     }
 }

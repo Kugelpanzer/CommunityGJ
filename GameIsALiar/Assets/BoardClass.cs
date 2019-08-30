@@ -162,57 +162,73 @@ public class BoardClass:MonoBehaviour
 	
 	public void MoveGhoulS()
     {
+        int pomX = 0, pomY = 0;
+        bool flag = false;
         for (int i = 0; i < GameBoard.GetLength(0); i++)
         {
 			for (int j = 0; j < GameBoard.GetLength(1); j++)
             {
                 if (GameBoard[i, j] == (int)GamePiece.Ghoul)
                 {
-                    if (GameBoard[i + 1, j] == (int)GamePiece.EmptyTile)
-                    {
-                        GameBoard[i + 1, j] = (int)GamePiece.Ghoul;
-                        GameBoard[i, j] = (int)GamePiece.EmptyTile;
-                    }
-                    else if (GameBoard[i + 1, j] > 3 &&  GameBoard[i + 1, j] < 8)
-                    {
-                        if (GameBoard[i + 2, j] == (int)GamePiece.EmptyTile)
-						{
-							GameBoard[i + 2, j] = GameBoard[i + 1, j];
-							GameBoard[i + 1, j] = (int)GamePiece.Ghoul;
-							GameBoard[i, j] = (int)GamePiece.EmptyTile;
-						}
-                    }
+                    flag = true;
+                    pomX = j;
+                    pomY = i;
                 }
             }
 		}
+        if (flag)
+        {
+            if (GameBoard[pomY + 1, pomX] == (int)GamePiece.EmptyTile)
+            {
+                GameBoard[pomY + 1, pomX] = (int)GamePiece.Ghoul;
+                GameBoard[pomY, pomX] = (int)GamePiece.EmptyTile;
+            }
+            else if (GameBoard[pomY + 1, pomX] > 3 && GameBoard[pomY + 1, pomX] < 8)
+            {
+                if (GameBoard[pomY + 2, pomX] == (int)GamePiece.EmptyTile)
+                {
+                    GameBoard[pomY + 2, pomX] = GameBoard[pomY + 1, pomX];
+                    GameBoard[pomY + 1, pomX] = (int)GamePiece.Ghoul;
+                    GameBoard[pomY, pomX] = (int)GamePiece.EmptyTile;
+                }
+            }
+        }
     }
 	
 	
 	public void MoveGhoulD()
     {
+        int pomX=0, pomY=0;
+        bool flag = false;
         for (int i = 0; i < GameBoard.GetLength(0); i++)
         {
 			for (int j = 0; j < GameBoard.GetLength(1); j++)
             {
                 if (GameBoard[i, j] == (int)GamePiece.Ghoul)
                 {
-                    if (GameBoard[i, j + 1] == (int)GamePiece.EmptyTile)
-                    {
-                        GameBoard[i, j + 1] = (int)GamePiece.Ghoul;
-                        GameBoard[i, j] = (int)GamePiece.EmptyTile;
-                    }
-                    else if (GameBoard[i, j + 1] > 3 &&  GameBoard[i, j + 1] < 8)
-                    {
-                        if (GameBoard[i, j + 2] == (int)GamePiece.EmptyTile)
-						{
-							GameBoard[i, j + 2] = GameBoard[i, j + 1];
-							GameBoard[i, j + 1] = (int)GamePiece.Ghoul;
-							GameBoard[i, j] = (int)GamePiece.EmptyTile;
-						}
-                    }
+                    flag = true;
+                    pomX = j;
+                    pomY = i;
                 }
             }
 		}
+        if (flag)
+        {
+            if (GameBoard[pomY, pomX + 1] == (int)GamePiece.EmptyTile)
+            {
+                GameBoard[pomY, pomX + 1] = (int)GamePiece.Ghoul;
+                GameBoard[pomY, pomX] = (int)GamePiece.EmptyTile;
+            }
+            else if (GameBoard[pomY, pomX + 1] > 3 && GameBoard[pomY, pomX + 1] < 8)
+            {
+                if (GameBoard[pomY, pomX + 2] == (int)GamePiece.EmptyTile)
+                {
+                    GameBoard[pomY, pomX + 2] = GameBoard[pomY, pomX + 1];
+                    GameBoard[pomY, pomX + 1] = (int)GamePiece.Ghoul;
+                    GameBoard[pomY, pomX] = (int)GamePiece.EmptyTile;
+                }
+            }
+        }
     }
 	
 	public void FirePetrificationRay()
