@@ -19,21 +19,25 @@ public class BoardClass:MonoBehaviour
 	public void increaseScore()
 	{
 		Score++;
+        /*
 		//Display Score
-		if(Score > 9)
+		if(Score >= WinCondition)
 		{
 			//Win
-		}	
+		}
+        */	
 	}
 	
 	public void killPeasant()
 	{
 		PeasantsAlive--;
-		//Display Number of living peasants
-		if(Score + PeasantsAlive < 10)
+		/*
+         //Display Number of living peasants
+		if(Score + PeasantsAlive < WinCondition)
 		{
 			//Lose
 		}	
+        */
 	}
 	
     public void MoveAllPeasantsW()

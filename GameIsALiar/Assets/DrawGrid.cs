@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DrawGrid : MonoBehaviour
 {
@@ -10,20 +11,29 @@ public class DrawGrid : MonoBehaviour
         public GameObject gj;
         public int id;
     }
-    BoardClass br;
-    LevelController lc;
+
 
     [Tooltip("if false moves ghoul, if true moves peasents")]
     public bool LevelFlag;
 
+    public int PeasentVictory = 10;
+
     public GameObject backgroundObj;
     public List<IdObj> ConvertList = new List<IdObj>();
-    Dictionary<int,GameObject> DictList= new Dictionary<int,GameObject>();
 
+    public Text ScoreUI;
+    public Text RemainingPeasentsUI;
+
+    #region PrivateProperties
+    BoardClass br;
+    LevelController lc;
+    Dictionary<int,GameObject> DictList= new Dictionary<int,GameObject>();
     List<GameObject> ExistingObjects = new List<GameObject>();
+    #endregion
+
     //public GridObject[,] Board;
     // Start is called before the first frame update
-    
+
     void Start()
     {
         foreach (IdObj io in ConvertList)
@@ -156,8 +166,26 @@ public class DrawGrid : MonoBehaviour
         return false;
     }
 
-
-
+    public void CheckVictory()
+    {
+        ScoreUI.text = PeasentVictory.ToString() + " / " + br.Score;
+        if (br.Score >= PeasentVictory)
+        {
+            lc.NextScene();
+        }
+        
+        RemainingPeasentsUI.text = br.PeasantsAlive.ToString();
+        if (br.Score + br.PeasantsAlive < PeasentVictory)
+        {
+            //Lose
+        }
+    }
+    public void FireTowers()
+    {
+        br.FireDislocatingBeam();
+        br.FirePetrificationRay();
+        br.FireTornadoGenerator();
+    }
     //Make move is called when any button is pressed 
     public void MakeMove()
     {
@@ -173,8 +201,11 @@ public class DrawGrid : MonoBehaviour
         {
             if (InputMovePeasent())
             {
+                FireTowers();
                 UpdateGrid();
                 br.ResetPeasents();
+                
+
                 lc.TakeTurn();
 
             }
