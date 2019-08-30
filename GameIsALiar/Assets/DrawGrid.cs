@@ -136,7 +136,7 @@ public class DrawGrid : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        InputMoveGhoul();
-        //InputMovePeasent();
+        //InputMoveGhoul();
+        InputMovePeasent();
     }
 }
