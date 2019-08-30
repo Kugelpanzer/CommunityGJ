@@ -402,16 +402,12 @@ public class BoardClass:MonoBehaviour
         int startX = BoardWidth / 2;
         SpawnGhoul(startY, startX);
         int currentPeasants = PeasantsAlive;
-        //
-        int br2 = 0;
-        //
+        int checker = 0;
         while (currentPeasants >= 0)
         {
-            //
-            br2++;
-            if (br2 == 10)
+            checker++;
+            if (checker == 10)
                 break;
-            //
             int br = 0;
             for (int i = startY + 1; i < BoardHeight; i++)
             {
