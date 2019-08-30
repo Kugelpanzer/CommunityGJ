@@ -214,6 +214,7 @@ GameObject:
   - component: {fileID: 2144867980}
   - component: {fileID: 2144867979}
   - component: {fileID: 2144867981}
+  - component: {fileID: 2144867982}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -233,6 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36f0fa876fa58a54da4846b662219704, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LevelFlag: 0
   backgroundObj: {fileID: 5405781174824064768, guid: f70206918b3af4048a319777c234ca63,
     type: 3}
   ConvertList:
@@ -244,6 +246,8 @@ MonoBehaviour:
     id: 3
   - gj: {fileID: 3982217625334774139, guid: c5e5698797f48a14fac9e96b661ff102, type: 3}
     id: 4
+  - gj: {fileID: 7312020317350117442, guid: e18461703763d8349b19d0388fd0e703, type: 3}
+    id: 8
 --- !u!4 &2144867980
 Transform:
   m_ObjectHideFlags: 0
@@ -272,3 +276,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BoardWidth: 10
   BoardHeight: 10
+--- !u!114 &2144867982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144867978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31b2c3db0c50dc5409aeb9e72e79f6cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Turns: 100
+  CurrentTurns: 0

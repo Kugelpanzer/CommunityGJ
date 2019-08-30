@@ -13,6 +13,9 @@ public class DrawGrid : MonoBehaviour
     BoardClass br;
     LevelController lc;
 
+    [Tooltip("if false moves ghoul, if true moves peasents")]
+    public bool LevelFlag;
+
     public GameObject backgroundObj;
     public List<IdObj> ConvertList = new List<IdObj>();
     Dictionary<int,GameObject> DictList= new Dictionary<int,GameObject>();
@@ -89,65 +92,90 @@ public class DrawGrid : MonoBehaviour
 
 
     }
-    public void InputMoveGhoul()
+    public bool InputMoveGhoul()
     {
        if(Input.GetKeyDown(KeyCode.D))
         {
             br.MoveGhoulD();
-            UpdateGrid();
-            lc.TakeTurn();
+
+            return true;
         }
        if (Input.GetKeyDown(KeyCode.A))
         {
             br.MoveGhoulA();
-            UpdateGrid();
-            lc.TakeTurn();
+
+            return true;
         }
        if (Input.GetKeyDown(KeyCode.S))
         {
             br.MoveGhoulS();
-            UpdateGrid();
-            lc.TakeTurn();
+
+            return true;
         }
        if (Input.GetKeyDown(KeyCode.W))
         {
             br.MoveGhoulW();
-            UpdateGrid();
-            lc.TakeTurn();
+
+            return true;
         }
+        return false;
+
     }
-    public void InputMovePeasent()
+    public bool InputMovePeasent()
     {
         if (Input.GetKeyDown(KeyCode.D))
         {
             br.MoveAllPeasantsD();
-            UpdateGrid();
-            lc.TakeTurn();
+
+            return true;
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
             br.MoveAllPeasantsA();
-            UpdateGrid();
-            lc.TakeTurn();
+
+            return true;
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
             br.MoveAllPeasantsS();
-            UpdateGrid();
-            lc.TakeTurn();
+
+            return true;
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
             br.MoveAllPeasantsW();
-            UpdateGrid();
-            lc.TakeTurn();
+
+            return true;
+        }
+
+        return false;
+    }
+
+    public void MakeMove()
+    {
+        if (LevelFlag)
+        {
+            if (InputMoveGhoul())
+            {
+                UpdateGrid();
+                lc.TakeTurn();
+            }
+        }
+        else
+        {
+            if (InputMovePeasent())
+            {
+                UpdateGrid();
+                br.ResetPeasents();
+                lc.TakeTurn();
+
+            }
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        //InputMoveGhoul();
-        InputMovePeasent();
+        MakeMove();
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GhoulLevelController : LevelController
 {
-    public int Turns;
+    public int Turns=100;
     public int CurrentTurns;
     // Start is called before the first frame update
     void Start()

@@ -293,6 +293,14 @@ public class BoardClass:MonoBehaviour
         GameBoard[i, j] = (int)GamePiece.MovableBlock;
     }
 
+    public void ResetPeasents()
+    {
+        for (int i = 0; i < GameBoard.GetLength(0); i++)
+            for (int j = 0; j < GameBoard.GetLength(1); j++)
+                if (GameBoard[i, j] == (int)GamePiece.StunnedPeasant)
+                    GameBoard[i, j] = (int)GamePiece.Peasant;
+    }
+
     public void SpawnWalls()
     {
         for (int i = 0; i < GameBoard.GetLength(0); i++)
