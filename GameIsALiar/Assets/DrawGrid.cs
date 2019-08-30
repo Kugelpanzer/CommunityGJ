@@ -29,36 +29,29 @@ public class DrawGrid : MonoBehaviour
         // Board = new GridObject[5, 5];
 
         br = GetComponent<BoardClass>();
+        SpawnBackground();
+
         br.SpawnWalls();
         br.SpawnGhoul(1, 1);
-        UpdateGrid();
-        br.MoveGhoulD();
-        /*br.MoveGhoulD();
-        br.MoveGhoulD();
-        br.MoveGhoulD();
-        br.MoveGhoulD();
-        br.MoveGhoulD();
-        br.MoveGhoulD();
-        br.MoveGhoulD();*/
-        br.MoveGhoulD();
-        br.MoveGhoulD();
+        br.SpawnPeasant(4,4);
+        br.SpawnPeasant(5, 4);
+        br.SpawnPeasant(5, 5);
         UpdateGrid();
         br.DebugBoard();
 
 
-        SpawnBackground();
+        
     }
 
     public void UpdateGrid()
     {
-
-        if(ExistingObjects.Count!=0)
-            for (int i = 0; i < ExistingObjects.Count - 1; i++)
+        //Debug.Log(ExistingObjects.Count);
+        if (ExistingObjects.Count!=0)
+            for (int i = 0; i < ExistingObjects.Count; i++)
             {
                  Destroy(ExistingObjects[i]);
             }
         ExistingObjects.Clear();
-        //Debug.Log(ExistingObjects.Count);
         for (int i = 0; i < br.GameBoard.GetLength(0); i++)
             for (int j = 0; j < br.GameBoard.GetLength(1); j++)
             {
@@ -86,6 +79,7 @@ public class DrawGrid : MonoBehaviour
                 Sprite spr = gj.GetComponent<SpriteRenderer>().sprite;
                 gj.transform.position = new Vector2(j * (spr.rect.width / 100), -i * (spr.rect.height / 100));
             }
+
 
     }
     public void InputMoveGhoul()
@@ -127,6 +121,7 @@ public class DrawGrid : MonoBehaviour
         {
             br.MoveAllPeasantsS();
             UpdateGrid();
+            br.DebugBoard();
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
@@ -138,6 +133,7 @@ public class DrawGrid : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        InputMoveGhoul();
+        //InputMoveGhoul();
+        InputMovePeasent();
     }
 }
