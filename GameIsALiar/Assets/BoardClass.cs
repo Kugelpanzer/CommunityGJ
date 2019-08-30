@@ -9,13 +9,33 @@ public class BoardClass:MonoBehaviour
 
     public int[,] GameBoard;
 
-    
-
+    public int Score = 0;
+	public int PeasantsAlive = 15;
     #endregion
 
 
 
     #region methods 
+	public void increaseScore()
+	{
+		Score++;
+		//Display Score
+		if(Score > 9)
+		{
+			//Win
+		}	
+	}
+	
+	public void killPeasant()
+	{
+		PeasantsAlive--;
+		//Display Number of living peasants
+		if(Score + PeasantsAlive < 10)
+		{
+			//Lose
+		}	
+	}
+	
     public void MoveAllPeasantsW()
     {
         for (int i = 0; i < GameBoard.GetLength(0); i++)
@@ -28,7 +48,13 @@ public class BoardClass:MonoBehaviour
                     {
                         GameBoard[i - 1, j] = (int)GamePiece.Peasant;
                         GameBoard[i, j] = (int)GamePiece.EmptyTile;
-                    }
+                    } 
+					else if (GameBoard[i - 1, j] == (int)GamePiece.Door)
+					{
+						increaseScore();
+						killPeasant();
+						GameBoard[i, j] = (int)GamePiece.EmptyTile;
+					}
                     else
                     {
                         GameBoard[i, j] = (int)GamePiece.StunnedPeasant;
@@ -254,9 +280,14 @@ public class BoardClass:MonoBehaviour
                 {
 					for (int k = i; k < GameBoard.GetLength(0); k++)
 					{
-						if (GameBoard[k, j] == (int)GamePiece.Peasant)
+						if (GameBoard[k, j] != (int)GamePiece.EmptyTile)
 						{
-							GameBoard[k, j] = (int)GamePiece.PetrifiedPeasant;
+							if (GameBoard[k, j] == (int)GamePiece.Peasant)
+							{
+								GameBoard[k, j] = (int)GamePiece.PetrifiedPeasant;
+								killPeasant();
+								return;
+							}
 							return;
 						}
 					}					
@@ -284,10 +315,80 @@ public class BoardClass:MonoBehaviour
 						{
 							GameBoard[i + 1, j] = (int)GamePiece.EmptyTile;
 							GameBoard[i + 5, j] = (int)GamePiece.EmptyTile;
-							//Add event for peasant death
+							killPeasant();
+							killPeasant();
 						}
 					
 					}				
+                }
+            }
+		}
+    }
+	
+	
+	public void FireTornadoGenerator()
+    {
+		int [] MoveElements = new int[8];
+		bool [] ContainsPeasant = new bool[8] { false,  false, false, false, false, false, false, false};
+        for (int i = 0; i < GameBoard.GetLength(0); i++)
+        {
+			for (int j = 0; j < GameBoard.GetLength(1); j++)
+            {
+                if (GameBoard[i, j] == (int)GamePiece.Tower3)
+                {
+					MoveElements[0] = GameBoard[i+1, j-1];
+					MoveElements[1] = GameBoard[i+1, j];
+					MoveElements[2] = GameBoard[i+1, j+1];
+					MoveElements[3] = GameBoard[i, j+1];
+					MoveElements[4] = GameBoard[i-1, j+1];
+					MoveElements[5] = GameBoard[i-1, j];
+					MoveElements[6] = GameBoard[i-1, j-1];
+					MoveElements[7] = GameBoard[i, j-1];
+					
+					for(int k = 0; k < 7; k++)
+					{
+						if (MoveElements[k] == (int)GamePiece.Peasant)
+						{
+							if (MoveElements[k+1] == (int)GamePiece.EmptyTile || MoveElements[k+1] == (int)GamePiece.Peasant)
+							{
+								MoveElements[k] = (int)GamePiece.EmptyTile;
+								ContainsPeasant[k+1] = true;
+							}
+							else 
+							{
+								MoveElements[k] = (int)GamePiece.EmptyTile;
+								killPeasant();
+							}
+						}
+					}
+					if (MoveElements[7] == (int)GamePiece.Peasant)
+					{
+						if (MoveElements[0] == (int)GamePiece.EmptyTile || MoveElements[0] == (int)GamePiece.Peasant)
+						{
+							MoveElements[7] = (int)GamePiece.EmptyTile;
+							ContainsPeasant[0] = true;
+						}
+						else 
+						{
+							MoveElements[7] = (int)GamePiece.EmptyTile;
+							killPeasant();
+						}
+					}		
+					for(int k = 0; k < 7; k++)
+					{
+						if(ContainsPeasant[k])
+						{
+							MoveElements[k] = (int)GamePiece.Peasant;
+						}
+					}
+					GameBoard[i+1, j-1] = MoveElements[0];
+					GameBoard[i+1, j] = MoveElements[1];
+					GameBoard[i+1, j+1] = MoveElements[2];
+					GameBoard[i, j+1] = MoveElements[3];
+					GameBoard[i-1, j+1] = MoveElements[4];
+					GameBoard[i-1, j] = MoveElements[5];
+					GameBoard[i-1, j-1] = MoveElements[6];
+					GameBoard[i, j-1] = MoveElements[7];					
                 }
             }
 		}
@@ -323,9 +424,11 @@ public class BoardClass:MonoBehaviour
                 if (i == 0 || j == 0 || i == GameBoard.GetLength(0) - 1 || j == GameBoard.GetLength(1) - 1)
                 {
                     GameBoard[i, j] = (int)GamePiece.ImmovableBlock;
+					
                 }
             }
 		}
+		GameBoard[0, GameBoard.GetLength(1)/2] = (int)GamePiece.Door;
     }
 
     public void DebugBoard()
@@ -362,5 +465,6 @@ enum GamePiece
     Tower2 = 6,
     Tower3 = 7,
     StunnedPeasant = 8,
-	PetrifiedPeasant = 9
+	PetrifiedPeasant = 9,
+	Door = 10
 }
