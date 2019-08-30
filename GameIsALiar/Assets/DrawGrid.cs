@@ -11,6 +11,7 @@ public class DrawGrid : MonoBehaviour
         public int id;
     }
     BoardClass br;
+    LevelController lc;
 
     public GameObject backgroundObj;
     public List<IdObj> ConvertList = new List<IdObj>();
@@ -29,6 +30,7 @@ public class DrawGrid : MonoBehaviour
         // Board = new GridObject[5, 5];
 
         br = GetComponent<BoardClass>();
+        lc = GetComponent<LevelController>();
         SpawnBackground();
 
         br.SpawnWalls();
@@ -49,12 +51,14 @@ public class DrawGrid : MonoBehaviour
     public void UpdateGrid()
     {
         //Debug.Log(ExistingObjects.Count);
-        if (ExistingObjects.Count!=0)
+        if (ExistingObjects.Count != 0)
+        {
             for (int i = 0; i < ExistingObjects.Count; i++)
             {
-                 Destroy(ExistingObjects[i]);
+                Destroy(ExistingObjects[i]);
             }
-        ExistingObjects.Clear();
+            ExistingObjects.Clear();
+        }
         for (int i = 0; i < br.GameBoard.GetLength(0); i++)
             for (int j = 0; j < br.GameBoard.GetLength(1); j++)
             {
@@ -91,21 +95,25 @@ public class DrawGrid : MonoBehaviour
         {
             br.MoveGhoulD();
             UpdateGrid();
+            lc.TakeTurn();
         }
        if (Input.GetKeyDown(KeyCode.A))
         {
             br.MoveGhoulA();
             UpdateGrid();
+            lc.TakeTurn();
         }
        if (Input.GetKeyDown(KeyCode.S))
         {
             br.MoveGhoulS();
             UpdateGrid();
+            lc.TakeTurn();
         }
        if (Input.GetKeyDown(KeyCode.W))
         {
             br.MoveGhoulW();
             UpdateGrid();
+            lc.TakeTurn();
         }
     }
     public void InputMovePeasent()
@@ -114,22 +122,25 @@ public class DrawGrid : MonoBehaviour
         {
             br.MoveAllPeasantsD();
             UpdateGrid();
+            lc.TakeTurn();
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
             br.MoveAllPeasantsA();
             UpdateGrid();
+            lc.TakeTurn();
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
             br.MoveAllPeasantsS();
             UpdateGrid();
-            br.DebugBoard();
+            lc.TakeTurn();
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
             br.MoveAllPeasantsW();
             UpdateGrid();
+            lc.TakeTurn();
         }
     }
 
