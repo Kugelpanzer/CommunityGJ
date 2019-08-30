@@ -47,13 +47,14 @@ public class DrawGrid : MonoBehaviour
         SpawnBackground();
 
         br.SpawnWalls();
-        br.SpawnGhoul(1, 1);
+        /*br.SpawnGhoul(1, 1);
         br.SpawnPeasant(4,4);
         br.SpawnPeasant(5, 4);
         br.SpawnPeasant(5, 5);
         br.SpawnBlock(5, 6);
         br.SpawnBlock(6, 6);
-        br.SpawnBlock(3, 3);
+        br.SpawnBlock(3, 3);*/
+        br.SpawnRandomPeasants(5);
         UpdateGrid();
         br.DebugBoard();
 

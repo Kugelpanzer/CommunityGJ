@@ -397,10 +397,47 @@ public class BoardClass:MonoBehaviour
             }
 		}
     }
-
-    public void SpawnPeasant(int i, int j)
+    public void SpawnRandomPeasants(int startY)
     {
-        GameBoard[i, j] = (int)GamePiece.Peasant;
+        int startX = BoardWidth / 2;
+        SpawnGhoul(startY, startX);
+        int currentPeasants = PeasantsAlive;
+        //
+        int br2 = 0;
+        //
+        while (currentPeasants >= 0)
+        {
+            //
+            br2++;
+            if (br2 == 10)
+                break;
+            //
+            int br = 0;
+            for (int i = startY + 1; i < BoardHeight; i++)
+            {
+                if(br*2+1<BoardWidth)
+                    br++;
+                    
+                for (int j =startX-br;j<startX+br+1;j++)
+                    if (Random.Range(0f, 1f) > 0.15f)
+                    {
+                        if (SpawnPeasant(i, j))
+                            currentPeasants--;
+                        if (currentPeasants <= 0)
+                            return;
+                    }
+
+            }
+        }
+    }
+    public bool SpawnPeasant(int i, int j)
+    {
+        if (GameBoard[i, j] == (int)GamePiece.EmptyTile)
+        {
+            GameBoard[i, j] = (int)GamePiece.Peasant;
+            return true;
+        }
+        return false;
     }
     public void SpawnGhoul (int i, int j)
     {
