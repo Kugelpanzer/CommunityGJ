@@ -107,10 +107,10 @@ TextureImporter:
       name: pesant1 65 - 86_0
       rect:
         serializedVersion: 2
-        x: 14
+        x: 0
         y: 86
-        width: 31
-        height: 65
+        width: 65
+        height: 86
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,7 +118,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 109daec61f011e54b8facd1b0d3d418e
+      spriteID: 391459ad475b8ab4eaa7b00f5c7855c3
       internalID: 5763381475293164309
       vertices: []
       indices: 
@@ -128,10 +128,10 @@ TextureImporter:
       name: pesant1 65 - 86_1
       rect:
         serializedVersion: 2
-        x: 79
+        x: 65
         y: 86
-        width: 31
-        height: 65
+        width: 65
+        height: 86
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -139,7 +139,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 80978ca37ab219e42bc90c557cb476f4
+      spriteID: af6db7d27e605e347aedc6ed4724e39f
       internalID: 8107925641733536037
       vertices: []
       indices: 
@@ -149,10 +149,10 @@ TextureImporter:
       name: pesant1 65 - 86_2
       rect:
         serializedVersion: 2
-        x: 144
+        x: 130
         y: 86
-        width: 31
-        height: 65
+        width: 65
+        height: 86
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -160,7 +160,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d595031affb08b49bbf18c6b5ae7085
+      spriteID: 6cbff7729226ca34787630c2a0fd691d
       internalID: 3947447594248532018
       vertices: []
       indices: 
@@ -170,10 +170,10 @@ TextureImporter:
       name: pesant1 65 - 86_3
       rect:
         serializedVersion: 2
-        x: 14
+        x: 0
         y: 0
-        width: 31
-        height: 65
+        width: 65
+        height: 86
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,7 +181,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8a9b61d7a73311c42bc87228fa97b200
+      spriteID: 0b4f14b3c65e2254f88dc0048c8578ff
       internalID: 1233924117172596530
       vertices: []
       indices: 
@@ -191,10 +191,10 @@ TextureImporter:
       name: pesant1 65 - 86_4
       rect:
         serializedVersion: 2
-        x: 79
-        y: 1
-        width: 31
-        height: 66
+        x: 65
+        y: 0
+        width: 65
+        height: 86
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -202,7 +202,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d5aabf26d3e427d4298efa0337868163
+      spriteID: 21d0ab6bbc33ea9408fbc9452f6cf11b
       internalID: 1442149434713149989
       vertices: []
       indices: 
@@ -212,10 +212,10 @@ TextureImporter:
       name: pesant1 65 - 86_5
       rect:
         serializedVersion: 2
-        x: 144
+        x: 130
         y: 0
-        width: 31
-        height: 65
+        width: 65
+        height: 86
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -223,7 +223,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fbd4115edb77fc94a86cea653ba8d7f0
+      spriteID: 704eeb4e5b4945b4a95e290bbec52e69
       internalID: 3358198843517214073
       vertices: []
       indices: 
