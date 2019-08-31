@@ -467,11 +467,11 @@ public class BoardClass:MonoBehaviour
 
     public void SpawnWalls()
     {
-        for (int i = 0; i < GameBoard.GetLength(0); i++)
+		for (int i = 0; i < 13; i++)
         {
 			for (int j = 0; j < GameBoard.GetLength(1); j++)
             {
-                if (i == 0 || j == 0 || i == GameBoard.GetLength(0) - 1 || j == GameBoard.GetLength(1) - 1)
+                if (i == 0 || j == 0 || i == 12 || j == GameBoard.GetLength(1) - 1)
                 {
                     GameBoard[i, j] = (int)GamePiece.ImmovableBlock;
 					
@@ -479,7 +479,23 @@ public class BoardClass:MonoBehaviour
             }
 		}
 		GameBoard[0, GameBoard.GetLength(1)/2] = (int)GamePiece.Door;
+		
+		GameBoard[12, 3] = (int)GamePiece.Door;
+		GameBoard[12, 6] = (int)GamePiece.Door;
+		GameBoard[12, 9] = (int)GamePiece.Door;
+		
+		GameBoard[4,5] = (int)GamePiece.Tower1;
+		GameBoard[4,6] = (int)GamePiece.Tower2;
+		GameBoard[4,7] = (int)GamePiece.Tower3;
+		GameBoard[5,6] = (int)GamePiece.MovableBlock;
+		GameBoard[8,7] = (int)GamePiece.MovableBlock;
+		GameBoard[10,6] = (int)GamePiece.MovableBlock;
+		GameBoard[3,10] = (int)GamePiece.MovableBlock;
+		
     }
+	
+
+	
 
     public void DebugBoard()
     {
@@ -525,5 +541,6 @@ enum GamePiece
     Tower3 = 7,
     StunnedPeasant = 8,
 	PetrifiedPeasant = 9,
-	Door = 10
+	Door = 10,
+	
 }
