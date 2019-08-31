@@ -692,6 +692,8 @@ MonoBehaviour:
     type: 3}
   grassObj: {fileID: 4712023342064847740, guid: fa9d58236ebada54e834f4bc8b53a06c,
     type: 3}
+  teleport: {fileID: 1132875742789003856, guid: 8a2272d70b932ae41842b981dd08dbd8,
+    type: 3}
   ConvertList:
   - gj: {fileID: 5532458770352674959, guid: cb8e1c616ad9b8d40abb6b1876a2f631, type: 3}
     id: 2
