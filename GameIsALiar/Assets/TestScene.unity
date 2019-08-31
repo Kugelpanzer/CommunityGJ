@@ -556,8 +556,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4f4639839e5ebd4597acec4c783ce2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BoardWidth: 26
-  BoardHeight: 13
+  BoardWidth: 13
+  BoardHeight: 26
   Score: 0
   PeasantsAlive: 15
 --- !u!4 &1804789520
@@ -657,5 +657,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31b2c3db0c50dc5409aeb9e72e79f6cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Turns: 10
+  Turns: 100
   CurrentTurns: 0

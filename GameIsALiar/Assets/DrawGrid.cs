@@ -114,7 +114,7 @@ public class DrawGrid : MonoBehaviour
             for (int j = 0; j < br.GameBoard.GetLength(1); j++)
             {
 
-                gj = Instantiate(backgroundObj);
+                gj = Instantiate(grassObj);
                 gj.transform.position = new Vector2(j * (spr.rect.width / 100), -i * (spr.rect.height / 100));
             }
 

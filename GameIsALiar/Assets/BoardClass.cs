@@ -513,7 +513,7 @@ public class BoardClass:MonoBehaviour
 
     private void Awake()
     {
-        GameBoard = new int[BoardWidth, BoardHeight];
+        GameBoard = new int[BoardHeight, BoardWidth];
 
         if (instance == null)
             instance = this;
