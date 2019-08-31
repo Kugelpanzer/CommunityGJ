@@ -284,7 +284,7 @@ public class BoardClass:MonoBehaviour
             {
                 if (GameBoard[i, j] == (int)GamePiece.Tower1)
                 {
-					for (int k = i; k < GameBoard.GetLength(0); k++)
+					for (int k = i+1; k < GameBoard.GetLength(0); k++)
 					{
 						if (GameBoard[k, j] != (int)GamePiece.EmptyTile)
 						{
