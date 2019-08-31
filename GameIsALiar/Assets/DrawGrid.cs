@@ -29,7 +29,7 @@ public class DrawGrid : MonoBehaviour
     LevelController lc;
     Dictionary<int,GameObject> DictList= new Dictionary<int,GameObject>();
     List<GameObject> ExistingObjects = new List<GameObject>();
-    List<GameObject> ExistingPeasents = new List<GameObject>();
+    public List<GameObject> ExistingPeasents = new List<GameObject>();
     #endregion
 
     //public GridObject[,] Board;
@@ -89,7 +89,7 @@ public class DrawGrid : MonoBehaviour
         //Debug.Log(ExistingObjects.Count);
         if (check)
         {
-            for (int i = 0; i < ExistingPeasents.Count; i++)
+            /*for (int i = 0; i < ExistingPeasents.Count; i++)
             {
                 int xx, yy;
                 xx=ExistingPeasents[i].GetComponent<PeasentScript>().posx;
@@ -98,7 +98,7 @@ public class DrawGrid : MonoBehaviour
                 {
                     ExistingPeasents[i].GetComponent<PeasentScript>().PeasentDeath();
                 }
-            }
+            }   */
         }
 
         ClearExisting();
