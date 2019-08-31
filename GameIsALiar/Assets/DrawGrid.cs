@@ -29,6 +29,7 @@ public class DrawGrid : MonoBehaviour
     LevelController lc;
     Dictionary<int,GameObject> DictList= new Dictionary<int,GameObject>();
     List<GameObject> ExistingObjects = new List<GameObject>();
+    List<GameObject> ExistingPeasents = new List<GameObject>();
     #endregion
 
     //public GridObject[,] Board;
@@ -70,17 +71,37 @@ public class DrawGrid : MonoBehaviour
         
     }
 
-    public void UpdateGrid() // Destroys all objects in grid and creates new ones
+
+    private void ClearExisting()
     {
-        //Debug.Log(ExistingObjects.Count);
         if (ExistingObjects.Count != 0)
         {
             for (int i = 0; i < ExistingObjects.Count; i++)
             {
-                Destroy(ExistingObjects[i]);
+                if (ExistingObjects[i] != null)
+                    Destroy(ExistingObjects[i]);
             }
             ExistingObjects.Clear();
         }
+    }
+    public void UpdateGrid(bool check=false) // Destroys all objects in grid and creates new ones
+    {
+        //Debug.Log(ExistingObjects.Count);
+        if (check)
+        {
+            for (int i = 0; i < ExistingPeasents.Count; i++)
+            {
+                int xx, yy;
+                xx=ExistingPeasents[i].GetComponent<PeasentScript>().posx;
+                yy=ExistingPeasents[i].GetComponent<PeasentScript>().posy;
+                if (br.GameBoard[yy,xx]!= (int)GamePiece.Peasant)
+                {
+                    ExistingPeasents[i].GetComponent<PeasentScript>().PeasentDeath();
+                }
+            }
+        }
+
+        ClearExisting();
         Sprite spr = backgroundObj.GetComponent<SpriteRenderer>().sprite;
         for (int i = 0; i < br.GameBoard.GetLength(0); i++)
             for (int j = 0; j < br.GameBoard.GetLength(1); j++)
@@ -89,8 +110,15 @@ public class DrawGrid : MonoBehaviour
                 //gj = Instantiate(DictList[1]);
                 if (DictList.ContainsKey(br.GameBoard[i, j]))
                 {
+
                     //Debug.Log("z");
                     ExistingObjects.Add(Instantiate(DictList[br.GameBoard[i, j]]));
+                    if (br.GameBoard[i, j] == (int)GamePiece.Peasant)
+                    {
+                        ExistingPeasents.Add(DictList[br.GameBoard[i, j]]);
+                        ExistingPeasents[ExistingPeasents.Count - 1].GetComponent<PeasentScript>().posx = j;
+                        ExistingPeasents[ExistingPeasents.Count - 1].GetComponent<PeasentScript>().posy = i;
+                    }
                     //Sprite spr = ExistingObjects[ExistingObjects.Count - 1].GetComponent<SpriteRenderer>().sprite;
                     ExistingObjects[ExistingObjects.Count - 1].GetComponent<SortSprites>().CalcOrder(i);
                     ExistingObjects[ExistingObjects.Count - 1].transform.position = new Vector2(j * (spr.rect.width / 100), -i * (spr.rect.height / 100));
@@ -221,8 +249,12 @@ public class DrawGrid : MonoBehaviour
             if (InputMovePeasent())
             {
 
-                FireTowers();
+
                 UpdateGrid();
+                FireTowers();
+                //tower animation
+                //peasent death
+                UpdateGrid(true);
                 br.ResetPeasents();
                 CheckVictory();
                 lc.TakeTurn();
