@@ -23,6 +23,10 @@ public class LevelController : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
+    public void GoToScene(int i )
+    {
+        SceneManager.LoadScene(i);
+    }
     public void ResetLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

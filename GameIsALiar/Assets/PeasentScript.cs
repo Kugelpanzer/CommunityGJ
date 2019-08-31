@@ -8,7 +8,8 @@ public class PeasentScript : MonoBehaviour
 
     public void PeasentDeath()
     {
-
+        GetComponent<Animator>().SetBool("Smrt", true);
+        Debug.Log("zzz");
     }
     // Start is called before the first frame update
     void Start()

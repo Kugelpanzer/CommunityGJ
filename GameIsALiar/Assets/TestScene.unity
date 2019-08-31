@@ -713,6 +713,7 @@ MonoBehaviour:
     id: 7
   - gj: {fileID: 6354206673534848957, guid: f840b536bf2070942914e977e7586bb0, type: 3}
     id: 9
+  ExistingPeasents: []
 --- !u!4 &2144867980
 Transform:
   m_ObjectHideFlags: 0
@@ -739,5 +740,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31b2c3db0c50dc5409aeb9e72e79f6cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Turns: 100
+  Turns: 10
   CurrentTurns: 0

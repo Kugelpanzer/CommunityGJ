@@ -184,6 +184,7 @@ public class DrawGrid : MonoBehaviour
     }
     public bool InputMovePeasent()// keyboard input for peasent
     {
+
         InputMoveGhoul();
         if (Input.GetKeyDown(KeyCode.D))
         {
@@ -252,9 +253,11 @@ public class DrawGrid : MonoBehaviour
 
                 UpdateGrid();
                 FireTowers();
+
                 //tower animation
                 //peasent death
-                UpdateGrid(true);
+                ExistingPeasents.Clear();
+                //UpdateGrid(true);
                 br.ResetPeasents();
                 CheckVictory();
                 lc.TakeTurn();
