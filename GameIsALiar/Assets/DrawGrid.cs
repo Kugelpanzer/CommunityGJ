@@ -13,16 +13,16 @@ public class DrawGrid : MonoBehaviour
     }
 
 
-    [Tooltip("if false moves ghoul, if true moves peasents")]
+    [Tooltip("if true moves ghoul, if false moves peasents")]
     public bool LevelFlag;
 
     public int PeasentVictory = 10;
-
+    public Text ScoreUI;
+    public Text RemainingPeasentsUI;
     public GameObject backgroundObj;
     public List<IdObj> ConvertList = new List<IdObj>();
 
-    public Text ScoreUI;
-    public Text RemainingPeasentsUI;
+
 
     #region PrivateProperties
     BoardClass br;
@@ -42,7 +42,7 @@ public class DrawGrid : MonoBehaviour
         }
         // Board = new GridObject[5, 5];
 
-        br = GetComponent<BoardClass>();
+        br = GameObject.Find("BoardObj").GetComponent<BoardClass>();
         lc = GetComponent<LevelController>();
         SpawnBackground();
 
@@ -54,7 +54,15 @@ public class DrawGrid : MonoBehaviour
         br.SpawnBlock(5, 6);
         br.SpawnBlock(6, 6);
         br.SpawnBlock(3, 3);*/
-        br.SpawnRandomPeasants(5);
+        if (!LevelFlag)
+        {
+            br.DestroyGhoul();
+            br.SpawnRandomPeasants(5);
+        }
+        else
+        {
+            br.SpawnGhoul(4, 4);
+        }
         UpdateGrid();
         br.DebugBoard();
 
@@ -205,9 +213,9 @@ public class DrawGrid : MonoBehaviour
                 FireTowers();
                 UpdateGrid();
                 br.ResetPeasents();
-                
-
+                CheckVictory();
                 lc.TakeTurn();
+
 
             }
         }

@@ -11,6 +11,8 @@ public class BoardClass:MonoBehaviour
 
     public int Score = 0;
 	public int PeasantsAlive = 15;
+
+    public static BoardClass instance;
     #endregion
 
 
@@ -439,6 +441,17 @@ public class BoardClass:MonoBehaviour
     {
         GameBoard[i, j] = (int)GamePiece.Ghoul;
     }
+    public void DestroyGhoul()
+    {
+        for (int i = 0; i < GameBoard.GetLength(0); i++)
+            for (int j = 0; j < GameBoard.GetLength(1); j++)
+            {
+                if (GameBoard[i, j] == (int)GamePiece.Ghoul)
+                {
+                    GameBoard[i, j] = (int)GamePiece.EmptyTile;
+                }
+            }
+    }
     public void SpawnBlock(int i, int j)
     {
         GameBoard[i, j] = (int)GamePiece.MovableBlock;
@@ -484,7 +497,16 @@ public class BoardClass:MonoBehaviour
 
     private void Awake()
     {
-        GameBoard = new int[BoardWidth, BoardHeight]; 
+        GameBoard = new int[BoardWidth, BoardHeight];
+
+        if (instance == null)
+            instance = this;
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }    
+        DontDestroyOnLoad(gameObject);
     }
     #endregion
 
