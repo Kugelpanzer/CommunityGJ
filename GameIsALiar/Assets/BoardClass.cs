@@ -29,9 +29,14 @@ public class BoardClass:MonoBehaviour
 		}
         */	
 	}
-	
-	public void killPeasant()
-	{
+
+    public void killPeasant(int i = -1, int j = -1)
+    {
+
+        if (i != -1 && j != -1)
+        {
+
+        }
 		PeasantsAlive--;
 		/*
          //Display Number of living peasants
