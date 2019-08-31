@@ -20,7 +20,7 @@ public class AudioMenager : MonoBehaviour
             s.source.pitch = 1f;
             s.source.loop = s.loop;
         }
-        PlaySound("theme");
+        PlaySound("Main");
         
     }
 
