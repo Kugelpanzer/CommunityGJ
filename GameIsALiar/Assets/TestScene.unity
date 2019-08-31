@@ -608,7 +608,9 @@ MonoBehaviour:
   PeasentVictory: 10
   ScoreUI: {fileID: 1324562303}
   RemainingPeasentsUI: {fileID: 1070715753}
-  backgroundObj: {fileID: 4712023342064847740, guid: fa9d58236ebada54e834f4bc8b53a06c,
+  backgroundObj: {fileID: 5886858261376854367, guid: 39a8a9f6cba2dbe4199bc0eb56113cb7,
+    type: 3}
+  grassObj: {fileID: 4712023342064847740, guid: fa9d58236ebada54e834f4bc8b53a06c,
     type: 3}
   ConvertList:
   - gj: {fileID: 5532458770352674959, guid: cb8e1c616ad9b8d40abb6b1876a2f631, type: 3}

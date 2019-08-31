@@ -19,7 +19,7 @@ public class DrawGrid : MonoBehaviour
     public int PeasentVictory = 10;
     public Text ScoreUI;
     public Text RemainingPeasentsUI;
-    public GameObject backgroundObj;
+    public GameObject backgroundObj,grassObj;
     public List<IdObj> ConvertList = new List<IdObj>();
 
 
@@ -92,7 +92,7 @@ public class DrawGrid : MonoBehaviour
                     //Debug.Log("z");
                     ExistingObjects.Add(Instantiate(DictList[br.GameBoard[i, j]]));
                     //Sprite spr = ExistingObjects[ExistingObjects.Count - 1].GetComponent<SpriteRenderer>().sprite;
-
+                    ExistingObjects[ExistingObjects.Count - 1].GetComponent<SortSprites>().CalcOrder(i);
                     ExistingObjects[ExistingObjects.Count - 1].transform.position = new Vector2(j * (spr.rect.width / 100), -i * (spr.rect.height / 100));
                 }
             }
@@ -102,7 +102,15 @@ public class DrawGrid : MonoBehaviour
     {
         GameObject gj;
         Sprite spr = backgroundObj.GetComponent<SpriteRenderer>().sprite;
-        for (int i = 0; i < br.GameBoard.GetLength(0); i++)
+        for (int i = 0; i < br.GameBoard.GetLength(0)/2; i++)
+            for (int j = 0; j < br.GameBoard.GetLength(1); j++)
+            {
+
+                gj = Instantiate(backgroundObj);
+                gj.transform.position = new Vector2(j * (spr.rect.width / 100), -i * (spr.rect.height / 100));
+            }
+        spr = grassObj.GetComponent<SpriteRenderer>().sprite;
+        for (int i = br.GameBoard.GetLength(0) / 2; i < br.GameBoard.GetLength(0) ; i++)
             for (int j = 0; j < br.GameBoard.GetLength(1); j++)
             {
 

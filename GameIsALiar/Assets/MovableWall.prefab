@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7902613589456220742}
   - component: {fileID: 4284367533900305301}
+  - component: {fileID: -3849271677881804189}
   m_Layer: 0
   m_Name: MovableWall
   m_TagString: Untagged
@@ -80,3 +81,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-3849271677881804189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1569316930959010523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 499e49096ce264a40801a407ec8c2ed5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OrderInLayer: 0

@@ -610,6 +610,7 @@ MonoBehaviour:
   RemainingPeasentsUI: {fileID: 1070715753}
   backgroundObj: {fileID: 4712023342064847740, guid: fa9d58236ebada54e834f4bc8b53a06c,
     type: 3}
+  grassObj: {fileID: 0}
   ConvertList:
   - gj: {fileID: 5532458770352674959, guid: cb8e1c616ad9b8d40abb6b1876a2f631, type: 3}
     id: 2
@@ -623,6 +624,12 @@ MonoBehaviour:
     id: 8
   - gj: {fileID: 5087747776018745465, guid: 747cdd59cd81e8645a6641f596ab01b3, type: 3}
     id: 10
+  - gj: {fileID: 6687362626634938323, guid: 864a1e18b6fa0414dbf03c1d7bd876b9, type: 3}
+    id: 5
+  - gj: {fileID: 193298475432207615, guid: 6255bec5819cbb947b0a0fd9f7a8a019, type: 3}
+    id: 6
+  - gj: {fileID: 8983911078306263157, guid: 11f665997c285bb4ba4007fd9b8f1bcf, type: 3}
+    id: 7
 --- !u!4 &2144867980
 Transform:
   m_ObjectHideFlags: 0
