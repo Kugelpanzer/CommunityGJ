@@ -665,6 +665,7 @@ GameObject:
   - component: {fileID: 2144867980}
   - component: {fileID: 2144867979}
   - component: {fileID: 2144867982}
+  - component: {fileID: 2144867981}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -692,6 +693,8 @@ MonoBehaviour:
     type: 3}
   grassObj: {fileID: 4712023342064847740, guid: fa9d58236ebada54e834f4bc8b53a06c,
     type: 3}
+  teleport: {fileID: 1132875742789003856, guid: 8a2272d70b932ae41842b981dd08dbd8,
+    type: 3}
   ConvertList:
   - gj: {fileID: 5532458770352674959, guid: cb8e1c616ad9b8d40abb6b1876a2f631, type: 3}
     id: 2
@@ -709,7 +712,7 @@ MonoBehaviour:
     id: 5
   - gj: {fileID: 193298475432207615, guid: 6255bec5819cbb947b0a0fd9f7a8a019, type: 3}
     id: 6
-  - gj: {fileID: 8983911078306263157, guid: 11f665997c285bb4ba4007fd9b8f1bcf, type: 3}
+  - gj: {fileID: 11636793664199819, guid: 5357d72e8f4a42440a152f5b7148e4c3, type: 3}
     id: 7
   - gj: {fileID: 6354206673534848957, guid: f840b536bf2070942914e977e7586bb0, type: 3}
     id: 9
@@ -728,6 +731,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2144867981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144867978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2bb63188f0cd0c46929eeb93ab2ecd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Main
+    clip: {fileID: 8300000, guid: 2a11740f3bafe2b43ac4ab57a3195752, type: 3}
+    volume: 0.351
+    loop: 1
+    source: {fileID: 0}
 --- !u!114 &2144867982
 MonoBehaviour:
   m_ObjectHideFlags: 0
