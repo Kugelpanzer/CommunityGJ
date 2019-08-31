@@ -19,7 +19,7 @@ public class DrawGrid : MonoBehaviour
     public int PeasentVictory = 10;
     public Text ScoreUI;
     public Text RemainingPeasentsUI;
-    public GameObject backgroundObj,grassObj;
+    public GameObject backgroundObj,grassObj,teleport;
     public List<IdObj> ConvertList = new List<IdObj>();
 
 
@@ -119,9 +119,17 @@ public class DrawGrid : MonoBehaviour
                         ExistingPeasents[ExistingPeasents.Count - 1].GetComponent<PeasentScript>().posx = j;
                         ExistingPeasents[ExistingPeasents.Count - 1].GetComponent<PeasentScript>().posy = i;
                     }
+
                     //Sprite spr = ExistingObjects[ExistingObjects.Count - 1].GetComponent<SpriteRenderer>().sprite;
                     ExistingObjects[ExistingObjects.Count - 1].GetComponent<SortSprites>().CalcOrder(i);
                     ExistingObjects[ExistingObjects.Count - 1].transform.position = new Vector2(j * (spr.rect.width / 100), -i * (spr.rect.height / 100));
+
+                    if (br.GameBoard[i, j] == (int)GamePiece.Tower2)
+                    {
+                        ExistingObjects.Add(Instantiate(teleport));
+                        ExistingObjects[ExistingObjects.Count - 1].transform.position = new Vector2(j * (spr.rect.width / 100), -(i+5) * (spr.rect.height / 100));
+
+                    }
                 }
             }
 
