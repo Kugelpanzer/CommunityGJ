@@ -12,6 +12,11 @@ public class BoardClass:MonoBehaviour
     public int Score = 0;
 	public int PeasantsAlive = 15;
 
+    struct posToElem
+    {
+        public int x, y, elem;
+    };
+
     public static BoardClass instance;
     #endregion
 
@@ -32,10 +37,16 @@ public class BoardClass:MonoBehaviour
 
     public void killPeasant(int i = -1, int j = -1)
     {
-
+        DrawGrid dg = GameObject.Find("Controller").GetComponent<DrawGrid>();
         if (i != -1 && j != -1)
         {
-
+           foreach(GameObject gj in dg.ExistingPeasents)
+            { int xx=gj.GetComponent<PeasentScript>().posx, yy = gj.GetComponent<PeasentScript>().posy;
+                if(yy==i && xx == j)
+                {
+                    gj.GetComponent<PeasentScript>().PeasentDeath();
+                }
+            }
         }
 		PeasantsAlive--;
 		/*
@@ -324,10 +335,11 @@ public class BoardClass:MonoBehaviour
 						} 
 						else if (GameBoard[i + 5, j] == (int)GamePiece.Peasant)
 						{
-							GameBoard[i + 1, j] = (int)GamePiece.EmptyTile;
+                            killPeasant(i + 5, j);
+                            killPeasant(i+1,j);
+                            GameBoard[i + 1, j] = (int)GamePiece.EmptyTile;
 							GameBoard[i + 5, j] = (int)GamePiece.EmptyTile;
-							killPeasant();
-							killPeasant();
+
 						}
 					
 					}				
@@ -341,6 +353,7 @@ public class BoardClass:MonoBehaviour
     {
 		int [] MoveElements = new int[8];
 		bool [] ContainsPeasant = new bool[8] { false,  false, false, false, false, false, false, false};
+
         for (int i = 0; i < GameBoard.GetLength(0); i++)
         {
 			for (int j = 0; j < GameBoard.GetLength(1); j++)
@@ -355,8 +368,38 @@ public class BoardClass:MonoBehaviour
 					MoveElements[5] = GameBoard[i-1, j];
 					MoveElements[6] = GameBoard[i-1, j-1];
 					MoveElements[7] = GameBoard[i, j-1];
-					
-					for(int k = 0; k < 7; k++)
+                    // nisam znao kako lakse animaciju za smrt da uradim
+                    List<posToElem> curr = new List<posToElem>();
+                    posToElem p= new posToElem();
+                    p = new posToElem();
+                    p.elem = 0;p.y = i + 1; p.x = j - 1;
+                    curr.Add(p);
+                    p = new posToElem();
+                    p.elem = 1;  p.y = i + 1; p.x = j;
+                    curr.Add(p);
+                    p = new posToElem();
+                    p.elem = 2; p.y = i + 1; p.x = j+1;
+                    curr.Add(p);
+                    p = new posToElem();
+                    p.elem = 3; p.y = i; p.x = j + 1;
+                    curr.Add(p);
+                    p = new posToElem();
+                    p.elem = 4; p.y = i - 1; p.x = j + 1;
+                    curr.Add(p);
+                    p = new posToElem();
+                    p.elem = 5; p.y = i -1; p.x = j;
+                    curr.Add(p);
+                    p = new posToElem();
+                    p.elem = 6; p.y = i - 1; p.x = j-1;
+                    curr.Add(p);
+                    p = new posToElem();
+                    p.elem = 7; p.y = i; p.x = j-1;
+                    curr.Add(p);
+
+
+
+                    //curr.Add()
+                    for (int k = 0; k < 7; k++)
 					{
 						if (MoveElements[k] == (int)GamePiece.Peasant)
 						{
@@ -368,7 +411,7 @@ public class BoardClass:MonoBehaviour
 							else 
 							{
 								MoveElements[k] = (int)GamePiece.EmptyTile;
-								killPeasant();
+								killPeasant(curr[k].y,curr[k].x);
 							}
 						}
 					}
@@ -382,7 +425,7 @@ public class BoardClass:MonoBehaviour
 						else 
 						{
 							MoveElements[7] = (int)GamePiece.EmptyTile;
-							killPeasant();
+							killPeasant(curr[7].y, curr[7].x);
 						}
 					}		
 					for(int k = 0; k < 7; k++)
