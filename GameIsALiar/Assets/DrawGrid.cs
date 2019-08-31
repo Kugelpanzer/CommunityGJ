@@ -81,6 +81,7 @@ public class DrawGrid : MonoBehaviour
             }
             ExistingObjects.Clear();
         }
+        Sprite spr = backgroundObj.GetComponent<SpriteRenderer>().sprite;
         for (int i = 0; i < br.GameBoard.GetLength(0); i++)
             for (int j = 0; j < br.GameBoard.GetLength(1); j++)
             {
@@ -90,7 +91,8 @@ public class DrawGrid : MonoBehaviour
                 {
                     //Debug.Log("z");
                     ExistingObjects.Add(Instantiate(DictList[br.GameBoard[i, j]]));
-                    Sprite spr = ExistingObjects[ExistingObjects.Count - 1].GetComponent<SpriteRenderer>().sprite;
+                    //Sprite spr = ExistingObjects[ExistingObjects.Count - 1].GetComponent<SpriteRenderer>().sprite;
+
                     ExistingObjects[ExistingObjects.Count - 1].transform.position = new Vector2(j * (spr.rect.width / 100), -i * (spr.rect.height / 100));
                 }
             }
@@ -99,13 +101,12 @@ public class DrawGrid : MonoBehaviour
     public void SpawnBackground() //spawns background in a grid thats size of map
     {
         GameObject gj;
-
+        Sprite spr = backgroundObj.GetComponent<SpriteRenderer>().sprite;
         for (int i = 0; i < br.GameBoard.GetLength(0); i++)
             for (int j = 0; j < br.GameBoard.GetLength(1); j++)
             {
 
                 gj = Instantiate(backgroundObj);
-                Sprite spr = gj.GetComponent<SpriteRenderer>().sprite;
                 gj.transform.position = new Vector2(j * (spr.rect.width / 100), -i * (spr.rect.height / 100));
             }
 
@@ -147,6 +148,7 @@ public class DrawGrid : MonoBehaviour
     }
     public bool InputMovePeasent()// keyboard input for peasent
     {
+        InputMoveGhoul();
         if (Input.GetKeyDown(KeyCode.D))
         {
             br.MoveAllPeasantsD();
@@ -210,6 +212,7 @@ public class DrawGrid : MonoBehaviour
         {
             if (InputMovePeasent())
             {
+
                 FireTowers();
                 UpdateGrid();
                 br.ResetPeasents();
