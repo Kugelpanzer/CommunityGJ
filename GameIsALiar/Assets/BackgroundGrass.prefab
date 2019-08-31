@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6425488536738560662}
   - component: {fileID: 3378162758636720042}
   m_Layer: 0
-  m_Name: Background
+  m_Name: BackgroundGrass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69,7 +69,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: cc62aa827a472774384d55de414403a0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0f4dc94ce5c25d04ca0b21abea078b75, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
