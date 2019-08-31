@@ -33,14 +33,5 @@ public class AudioMenager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (rand <= 0)
-        {
-            PlaySound("crowd");
-            rand = Random.Range(200, 600);
-        }
-        else
-        {
-            rand--;
-        }
     }
 }

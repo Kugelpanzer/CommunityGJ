@@ -539,7 +539,13 @@ public class BoardClass:MonoBehaviour
 		GameBoard[8,7] = (int)GamePiece.MovableBlock;
 		GameBoard[10,6] = (int)GamePiece.MovableBlock;
 		GameBoard[3,10] = (int)GamePiece.MovableBlock;
-		
+        GameBoard[4, 10] = (int)GamePiece.MovableBlock;
+        GameBoard[5, 10] = (int)GamePiece.MovableBlock;
+        GameBoard[6, 8] = (int)GamePiece.MovableBlock;
+        GameBoard[5, 11] = (int)GamePiece.MovableBlock;
+        GameBoard[4, 2] = (int)GamePiece.MovableBlock;
+        GameBoard[3, 4] = (int)GamePiece.MovableBlock;
+
     }
 	
 

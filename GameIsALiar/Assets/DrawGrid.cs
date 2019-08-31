@@ -18,7 +18,7 @@ public class DrawGrid : MonoBehaviour
 
     public int PeasentVictory = 10;
     public Text ScoreUI;
-    public Text RemainingPeasentsUI;
+    public Text RemainingPeasentsUI,TurnsUI;
     public GameObject backgroundObj,grassObj,teleport;
     public List<IdObj> ConvertList = new List<IdObj>();
 
@@ -58,7 +58,7 @@ public class DrawGrid : MonoBehaviour
         if (!LevelFlag)
         {
             br.DestroyGhoul();
-            br.SpawnRandomPeasants(5);
+            br.SpawnRandomPeasants(18);
         }
         else
         {
